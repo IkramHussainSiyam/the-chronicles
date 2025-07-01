@@ -1,0 +1,67 @@
+.loading-text {
+  --loading-text-bg: radial-gradient(circle closest-side, #000 94%, #0000)
+    right/calc(200% - 1em) 100%;
+  --loading-text-before-bg: radial-gradient(
+    circle closest-side,
+    #fff 94%,
+    #000
+  );
+  --loading-text-before-clr: #0000;
+}
+
+.dark .loading-text {
+  --loading-text-bg: radial-gradient(circle closest-side, #fff 94%, #fff0)
+    right/calc(200% - 1em) 100%;
+  --loading-text-before-bg: radial-gradient(
+    circle closest-side,
+    #18181b 94%,
+    #fff
+  );
+  --loading-text-before-clr: #fff0;
+}
+
+.loading-text {
+  width: fit-content;
+  display: block;
+  background: var(--loading-text-bg);
+  animation: loading-text-anim 1s infinite alternate linear;
+}
+.loading-text::before {
+  color: var(--loading-text-before-clr);
+  background: inherit;
+  background-image: var(--loading-text-before-bg);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.loading-dot {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 20%;
+  animation: loading-dot-anim 1s infinite linear alternate;
+}
+
+@keyframes loading-dot-anim {
+  0% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #000;
+  }
+  33% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #0002;
+  }
+  66% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #0002;
+  }
+  100% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #000;
+  }
+}
+
+@keyframes loading-text-anim {
+  100% {
+    background-position: left;
+  }
+}
